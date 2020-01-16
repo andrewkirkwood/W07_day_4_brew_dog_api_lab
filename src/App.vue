@@ -10,15 +10,17 @@
       </template>
 
       <script>
+      import {eventBus} from './main.js'
+
       import AllBeersList from './components/AllBeersList.vue'
 
       export default {
         name: 'app',
         data() {
           return {
-            beers: []
+            beers: [],
             // favouriteBeers: [],
-            // selectedBeerId: null
+            selectedBeerId: null
           }
         },
         mounted() {
@@ -26,11 +28,19 @@
             .then(response => response.json())
             .then(beers => this.beers = beers)
 
+            eventBus.$on('beer-selected', (beer)=> {
+              this.selectedBeer = beer
+            })
         },
         components: {
           "all-beers-list": AllBeersList
           // "beer-detail": BeerDetail,
           // "favourite-beers-list": FavouriteBeersList
+        },
+        computed: {
+          renderBeer: function () {
+            return this.beers.find(beer => beer.id === this.selectedBeerId)
+          }
         }
       }
       </script>
