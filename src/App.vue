@@ -41,9 +41,8 @@
               }
             })
             eventBus.$on('favourite-beer-de-selected',(beer) => {
-              const mapOfIds = this.favouriteBeers.map(beer => beer.id)
-
-                this.favouriteBeers.remove(beer)
+              const index = this.favouriteBeers.indexOf(beer)
+                this.favouriteBeers.splice(index)
             })
 
         },
