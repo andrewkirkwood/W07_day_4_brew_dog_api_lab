@@ -10,7 +10,6 @@ export default {
   methods: {
     handleClick(){
       eventBus.$emit('beer-selected', this.beer)
-      console.log(this.beer);
     }
   }
 }

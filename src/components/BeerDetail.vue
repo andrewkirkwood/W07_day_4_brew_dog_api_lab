@@ -11,13 +11,23 @@
     <dt>Description:</dt>
     <dd>{{ beer.description }}</dd>
     </dl>
+
+    <button v-on:click="handleSubmit" type="submit" name="button">Make favourite</button>
+
   </article>
 </template>
 
 <script>
+import {eventBus} from '../main.js'
+
 export default {
   name: 'beer-detail',
-  props: ['beer']
+  props: ['beer'],
+  methods: {
+    handleSubmit() {
+      eventBus.$emit('favourite-beer-selected', this.beer)
+    }
+  }
 }
 </script>
 
