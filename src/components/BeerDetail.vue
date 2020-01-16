@@ -12,7 +12,8 @@
     <dd>{{ beer.description }}</dd>
     </dl>
 
-    <button v-on:click="handleSubmit" type="submit" name="button" value="beer.id">Make favourite</button>
+    <button v-on:click="handleSubmit" type="submit" name="button" >Make favourite</button>
+    <button v-on:click="handleUnFavourite" type="submit" name="button" >Un-favourite</button>
 
   </article>
 </template>
@@ -26,6 +27,9 @@ export default {
   methods: {
     handleSubmit() {
       eventBus.$emit('favourite-beer-selected', this.beer)
+    },
+    handleUnFavourite() {
+      eventBus.$emit('favourite-beer-de-selected', this.beer)
     }
   }
 }

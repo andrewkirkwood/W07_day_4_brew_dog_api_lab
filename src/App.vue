@@ -39,8 +39,13 @@
               if (!mapOfIds.includes(beer.id)){
                 this.favouriteBeers.push(beer)
               }
-
             })
+            eventBus.$on('favourite-beer-de-selected',(beer) => {
+              const mapOfIds = this.favouriteBeers.map(beer => beer.id)
+
+                this.favouriteBeers.remove(beer)
+            })
+
         },
         components: {
           "all-beers-list": AllBeersList,
@@ -54,7 +59,7 @@
       </script>
 
       <style>
-        /* #app {
+        /*#app {
           font-family: 'Avenir', Helvetica, Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
