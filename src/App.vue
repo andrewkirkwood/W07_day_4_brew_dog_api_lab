@@ -10,8 +10,8 @@
       </template>
 
       <script>
-      import {eventBus} from './main.js'
 
+      import {eventBus} from './main.js'
       import AllBeersList from './components/AllBeersList.vue'
 
       export default {
@@ -20,8 +20,8 @@
           return {
             beers: [],
             // favouriteBeers: [],
-            selectedBeerId: null
-          }
+            selectedBeer: null
+          };
         },
         mounted() {
           fetch('https://api.punkapi.com/v2/beers')
@@ -30,6 +30,7 @@
 
             eventBus.$on('beer-selected', (beer)=> {
               this.selectedBeer = beer
+              console.log(this.selectedBeer);
             })
         },
         components: {
@@ -37,11 +38,11 @@
           // "beer-detail": BeerDetail,
           // "favourite-beers-list": FavouriteBeersList
         },
-        computed: {
-          renderBeer: function () {
-            return this.beers.find(beer => beer.id === this.selectedBeerId)
-          }
-        }
+        // computed: {
+        //   renderBeer: function () {
+        //     return this.beers.find(beer => beer === this.selectedBeer)
+        //   }
+        // }
       }
       </script>
 
