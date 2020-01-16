@@ -35,7 +35,11 @@
             })
 
             eventBus.$on('favourite-beer-selected', (beer)=> {
-              this.favouriteBeers.push(beer)
+              const mapOfIds = this.favouriteBeers.map(beer => beer.id)
+              if (!mapOfIds.includes(beer.id)){
+                this.favouriteBeers.push(beer)
+              }
+
             })
         },
         components: {

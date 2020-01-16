@@ -12,7 +12,7 @@
     <dd>{{ beer.description }}</dd>
     </dl>
 
-    <button v-on:click="handleSubmit" type="submit" name="button">Make favourite</button>
+    <button v-on:click="handleSubmit" type="submit" name="button" value="beer.id">Make favourite</button>
 
   </article>
 </template>
